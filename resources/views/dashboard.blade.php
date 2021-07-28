@@ -193,7 +193,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="{{ asset('user_images/' . $loginUserdata->avatar) }}">
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{ $loginUserdata->username }}</a>
@@ -202,7 +202,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="{{ asset('user_images/' . $loginUserdata->avatar) }}">
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -248,7 +248,7 @@
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h2 class="title-2 m-b-35 text-center">data table</h2>
-                                <h3 class="title-5 m-b-10">user information</h3>
+                                <h3 class="title-5 m-b-10">personal information</h3>
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table  table-data3">
                                         <thead>
@@ -264,31 +264,32 @@
                                         </thead>
                                         <tbody>
                                             <tr class="tr-shadow">
-                                                <td>{{ $loginUserdata->avatar }}</td>
-                                                <td>{{ $loginUserdata->username }}</td>
-                                                <td>
+                                                <td><img src="{{ asset('user_images/' . $loginUserdata->avatar) }}"
+                                                        style="height: 151px; width: 150px;">
+                                                </td>
+                                                <td style="text-align: center; vertical-align: middle;">
+                                                    {{ $loginUserdata->username }}</td>
+                                                <td style="text-align: center; vertical-align: middle;">
                                                     <span class="block-email">{{ $loginUserdata->email }}</span>
                                                 </td>
-                                                <td class="desc">{{ $loginUserdata->password }}</td>
-                                                <td>{{ $loginUserdata->created_at }}</td>
-                                                <td>
+                                                <td class="desc" style="text-align: center; vertical-align: middle;">
+                                                    {{ $loginUserdata->password }}</td>
+                                                <td style="text-align: center; vertical-align: middle;">
+                                                    {{ $loginUserdata->created_at }}</td>
+                                                <td style="text-align: center; vertical-align: middle;">
                                                     <span class="status--process">Login</span>
                                                 </td>
-                                                <td>
+                                                <td style="text-align: center; vertical-align: middle;">
                                                     <div class="table-data-feature">
-                                                        {{-- <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button> --}}
                                                         <button type="button" class="item " data-bs-toggle="modal"
                                                             data-bs-target="#exampleModal1" data-toggle="tooltip"
                                                             data-placement="top" title="Update">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                        {{-- <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
-                                                        </button>
+                                                        </button> --}}
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="More">
                                                             <i class="zmdi zmdi-more"></i>
@@ -305,7 +306,7 @@
                         <div class="row m-t-30">
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
-                                <h3 class="title-5 m-b-10">educational information</h3>
+                                <h3 class="title-5 m-b-10">academic qualification</h3>
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
