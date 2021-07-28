@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\UpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,6 @@ Route::post('login-success', [LoginController::class, 'postloginData'])->name('l
 Route::get('dashboard', [DashboardController::class, 'showdashboard'])->middleware('isLoggedIn');
 Route::get('logout', [LogoutController::class, 'logout']);
 
-Route::get('update', [RegistrationController::class, 'update']);
+// update
+Route::get('updateform/{id}', [UpdateController::class, 'updateform']);
+Route::post('update', [UpdateController::class, 'update'])->name('update');

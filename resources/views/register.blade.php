@@ -80,6 +80,7 @@
     <script>
         $(document).ready(function() {
             $("#registration-form").validate({
+                errorClass: 'errors',
                 rules: {
                     username: {
                         required: true,

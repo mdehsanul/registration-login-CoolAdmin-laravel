@@ -255,6 +255,7 @@
                                             <tr>
                                                 <th>avatar</th>
                                                 <th>name</th>
+                                                <th>phone number</th>
                                                 <th>email</th>
                                                 <th>password</th>
                                                 <th>date</th>
@@ -270,6 +271,8 @@
                                                 <td style="text-align: center; vertical-align: middle;">
                                                     {{ $loginUserdata->username }}</td>
                                                 <td style="text-align: center; vertical-align: middle;">
+                                                    {{ $loginUserdata->phone_number }}</td>
+                                                <td style="text-align: center; vertical-align: middle;">
                                                     <span class="block-email">{{ $loginUserdata->email }}</span>
                                                 </td>
                                                 <td class="desc" style="text-align: center; vertical-align: middle;">
@@ -281,11 +284,11 @@
                                                 </td>
                                                 <td style="text-align: center; vertical-align: middle;">
                                                     <div class="table-data-feature">
-                                                        <button type="button" class="item " data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal1" data-toggle="tooltip"
-                                                            data-placement="top" title="Update">
+                                                        <a href={{ 'updateform/' . $loginUserdata->id }} class="item "
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                                                            data-toggle="tooltip" data-placement="top" title="Update">
                                                             <i class="zmdi zmdi-edit"></i>
-                                                        </button>
+                                                        </a>
                                                         {{-- <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
@@ -355,43 +358,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="update-form">
-                        {{-- action="{{ route('update-success') }}" method="post" --}}
-                        {{-- @if (Session::has('success'))
-                                <div class="alert alert-success">{{ Session::get('success') }}</div>
-                            @endif
-                            @if (Session::has('fail'))
-                                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-                            @endif
-                            @csrf --}}
+                    {{-- update using ajax --}}
+                    <form action="{{ route('update') }}" method="post" enctype="multipart/form-data" id="update-form">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $loginUserdata['id'] }}">
                         <div class="form-group">
                             <label class="fw-bolder">Username</label>
                             <input class="au-input au-input--full" type="text" id="username" name="username"
-                                placeholder="Username">
+                                placeholder="Username" value="{{ $loginUserdata['username'] }}">
                         </div>
                         <div class="form-group">
                             <label class="fw-bolder">Phone Number</label>
                             <input class="au-input au-input--full" type="tel" id="telephone" name="telephone"
-                                placeholder="Phone Number">
+                                placeholder="Phone Number" value="{{ $loginUserdata['phone_number'] }}">
                         </div>
                         <div class="form-group">
                             <label class="fw-bolder">Password</label>
                             <input class="au-input au-input--full" type="password" id="password" name="password"
-                                placeholder="Password">
+                                placeholder="Password" value="{{ $loginUserdata['password'] }}">
                         </div>
                         <div class="form-group">
                             <label class="fw-bolder">Confirm Password</label>
                             <input class="au-input au-input--full" type="password" id="cpassword" name="cpassword"
-                                placeholder="Confirm Password">
+                                placeholder="Confirm Password" value="{{ $loginUserdata['confirm_password'] }}">
                         </div>
                         <div class="form-group">
                             <label class="fw-bolder">Avatar</label>
-                            <input class="au-input au-input--full" type="file" id="image" name="image" placeholder="image">
+                            <input class="au-input au-input--full" type="file" id="image" name="image" placeholder="image"
+                                value="{{ $loginUserdata['avatar'] }}">
                         </div>
-                        {{-- <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Update</button> --}}
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn au-btn--green text-white">Update</button>
+                            <button type="submit" class="btn au-btn--green text-white" id="update_data">Update</button>
                         </div>
                     </form>
                 </div>
@@ -400,7 +398,7 @@
     </div>
     {{-- Modal for update End --}}
 
-    <!-- Modal for Education -->
+    <!-- Modal for Education Start -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -455,7 +453,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fw-bolder">Passing year</label>
-                                    <input class="au-input au-input--full" type="date" id="msc_year" name="msc_year">
+                                    <input class="au-input au-input--full" type="date" id="year" name="year">
                                 </div>
                                 <div class="form-group">
                                     <label class="fw-bolder">Result</label>
@@ -480,7 +478,7 @@
             </div>
         </div>
     </div>
-    {{-- Modal for Education --}}
+    {{-- Modal for Education End --}}
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
@@ -546,6 +544,37 @@
             },
             "Please enter a valid 11 digit phone number"
         );
+    </script>
+
+    {{-- update using ajax --}}
+    <script>
+        $(document).ready(function() {
+            $(document).on("click", "#update_data", function() {
+                var url = "{{ URL('update/' . $loginUserdata->id) }}";
+                var id =
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        cache: false,
+                        data: {
+                            username: $('#username').val(),
+                            telephone: $('#telephone').val(),
+                            password: $('#password').val(),
+                            cpassword: $('#cpassword').val(),
+                            image: $('#image').val(),
+                        },
+                        // success: function(dataResult) {
+                        //     dataResult = JSON.parse(dataResult);
+                        //     if (dataResult.statusCode) {
+                        //         window.location = "/update";
+                        //     } else {
+                        //         alert("Internal Server Error");
+                        //     }
+
+                        // }
+                    });
+            });
+        });
     </script>
 
     {{-- For Bootstrap Modal --}}

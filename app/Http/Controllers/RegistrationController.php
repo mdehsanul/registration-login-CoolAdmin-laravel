@@ -46,9 +46,4 @@ class RegistrationController extends Controller
             return back()->with('fail', 'Something Wrong');
         }
     }
-
-    function update()
-    {
-        return view('update');
-    }
 }
