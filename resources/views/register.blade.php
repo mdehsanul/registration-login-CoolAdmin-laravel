@@ -11,7 +11,8 @@
                             <h3>Register your Account</h3>
                         </div>
                         <div class="login-form">
-                            <form action="{{ route('registration-success') }}" method="post" id="registration-form">
+                            <form action="{{ route('registration-success') }}" method="post" enctype="multipart/form-data"
+                                id="registration-form">
                                 @if (Session::has('success'))
                                     <div class="alert alert-success">{{ Session::get('success') }}</div>
                                 @endif
@@ -33,6 +34,7 @@
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" id="email" name="email"
                                         placeholder="Email">
+                                    <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>

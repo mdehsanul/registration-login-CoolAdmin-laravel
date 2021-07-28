@@ -247,15 +247,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">data table</h3>
-                                {{-- <div class="table-data__tool d-flex justify-content-end">
-                                    <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--blue au-btn--small">
-                                            </i>update information</button>
-                                    </div>
-                                </div> --}}
+                                <h2 class="title-2 m-b-35 text-center">data table</h2>
+                                <h3 class="title-5 m-b-10">user information</h3>
                                 <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                    <table class="table  table-data3">
                                         <thead>
                                             <tr>
                                                 <th>avatar</th>
@@ -310,14 +305,15 @@
                         <div class="row m-t-30">
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
+                                <h3 class="title-5 m-b-10">educational information</h3>
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
                                                 <th>degree</th>
                                                 <th>subject/mejor</th>
-                                                <th>university/college/school</th>
-                                                <th>year</th>
+                                                <th>Institution(university/college/school)</th>
+                                                <th>Passing year</th>
                                                 <th>result</th>
                                                 <th>out of</th>
                                             </tr>
@@ -331,37 +327,13 @@
                                                 <td class="process">Processed</td>
                                                 <td>$999.00</td>
                                             </tr>
-                                            <tr>
-                                                <td>2018-09-28 01:22</td>
-                                                <td>Mobile</td>
-                                                <td>Samsung S8 Black</td>
-                                                <td>$999.00</td>
-                                                <td class="process">Processed</td>
-                                                <td>$756.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-27 02:12</td>
-                                                <td>Game</td>
-                                                <td>Game Console Controller</td>
-                                                <td>$999.00</td>
-                                                <td class="denied">Denied</td>
-                                                <td>$22.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-26 23:06</td>
-                                                <td>Mobile</td>
-                                                <td>iPhone X 256Gb Black</td>
-                                                <td>$999.00</td>
-                                                <td class="denied">Denied</td>
-                                                <td>$1199.00</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- END DATA TABLE-->
                                 <!-- Modal Button -->
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn au-btn au-btn-icon au-btn--blue" data-bs-toggle="modal"
+                                    <button type="button" class="au-btn au-btn-icon au-btn--blue" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal2">
                                         <i class="zmdi zmdi-plus"></i>add educational information</button>
                                 </div>
@@ -378,7 +350,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Update your Information</h4>
+                    <h3 class="modal-title" id="exampleModalLabel">Update your Information</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -392,27 +364,27 @@
                             @endif
                             @csrf --}}
                         <div class="form-group">
-                            <label>Username</label>
+                            <label class="fw-bolder">Username</label>
                             <input class="au-input au-input--full" type="text" id="username" name="username"
                                 placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
+                            <label class="fw-bolder">Phone Number</label>
                             <input class="au-input au-input--full" type="tel" id="telephone" name="telephone"
                                 placeholder="Phone Number">
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label class="fw-bolder">Password</label>
                             <input class="au-input au-input--full" type="password" id="password" name="password"
                                 placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label>Confirm Password</label>
+                            <label class="fw-bolder">Confirm Password</label>
                             <input class="au-input au-input--full" type="password" id="cpassword" name="cpassword"
                                 placeholder="Confirm Password">
                         </div>
                         <div class="form-group">
-                            <label>Avatar</label>
+                            <label class="fw-bolder">Avatar</label>
                             <input class="au-input au-input--full" type="file" id="image" name="image" placeholder="image">
                         </div>
                         {{-- <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Update</button> --}}
@@ -429,140 +401,80 @@
 
     <!-- Modal for Education -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Education</h4>
+                    <h3 class="modal-title" id="exampleModalLabel">Education</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        {{-- action="{{ route('update-success') }}" method="post" --}}
-                        {{-- @if (Session::has('success'))
-                                    <div class="alert alert-success">{{ Session::get('success') }}</div>
-                                @endif
-                                @if (Session::has('fail'))
-                                    <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-                                @endif
-                                @csrf --}}
-                        <div class="col">
-                            <div class="row">
-                                {{-- University --}}
-                                <h2 class="text-center my-3"> <u>M.Sc</u> </h2>
-                                <div class="col-md-6 form-group">
-                                    <label class="fw-bolder">Degree(M.Sc.)</label>
-                                    <input class="au-input au-input--full" type="text" id="msc" name="msc">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Passing year</label>
-                                    <input class="au-input au-input--full" type="number" id="msc_year" name="msc_year">
+                    <div id="example-basic">
+                        <form id="example-advanced-form" action="#">
+                            {{-- action="{{ route('update-success') }}" method="post" --}}
+                            {{-- University --}}
+                            <section>
+                                <div class="form-group">
+                                    <label class="fw-bolder">Degree</label>
+                                    <select class="au-input au-input--full" name="degree" id="degree" style="height: 45px">
+                                        <option value="" selected disabled>-- Choose here --</option>
+                                        <option value="M.Sc(Master in Science)">M.Sc(Master in Science)</option>
+                                        <option value="B.Sc(Bechalor in Science)">B.Sc(Bechalor in Science)</option>
+                                        <option value="Honours">Honours</option>
+                                        <option value="HSC(Higher School Certificate)">HSC(Higher School Certificate)
+                                        </option>
+                                        <option value="SSC(Secondary School Certificate)">SSC(Secondary School Certificate)
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Subject</label>
-                                    <input class="au-input au-input--full" type="text" id="msc_subject" name="msc_subject">
+                                    <label class="fw-bolder">Subject/Mejor</label>
+                                    <select class="au-input au-input--full" id="subject" name="subject"
+                                        style="height: 45px">
+                                        <option value="" selected disabled>-- Choose here --</option>
+                                        <option value="CSE(Computer Science and Engineering)">CSE(Computer Science and
+                                            Engineering)</option>
+                                        <option value="EEE(Electrical and Electronics Engineering)">EEE(Electrical and
+                                            Electronics Engineering)</option>
+                                        <option value="ECE(Electronics and Computer Engineering)">ECE(Electronics and
+                                            Computer Engineering)
+                                        </option>
+                                        <option value="CE(Civil Engineering)">CE(Civil Engineering)</option>
+                                        <option value="ME(Mechanical Engineering)">ME(Mechanical Engineering)</option>
+                                        <option value="Business Administration">Business Administration</option>
+                                        </option>
+                                        <option value="English">English</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Arts">Arts</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>University</label>
-                                    <input class="au-input au-input--full" type="text" id="msc_university"
-                                        name="msc_university">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Result</label>
-                                    <input class="au-input au-input--full" type="number" id="msc_result" name="msc_result">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Out Of</label>
-                                    <input class="au-input au-input--full" type="number" id="msc_out_of" name="msc_out_of">
-                                </div>
-                                <hr>
-                                {{-- university --}}
-                                <h2 class="text-center my-3"> <u>B.Sc</u> </h2>
-                                <div class="col-md-6 form-group">
-                                    <label class="fw-bolder">Degree(B.Sc.)</label>
-                                    <input class="au-input au-input--full" type="text" id="bsc" name="bsc">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Passing year</label>
-                                    <input class="au-input au-input--full" type="number" id="bsc_year" name="bsc_year">
+                                    <label class="fw-bolder">Institution(university/college/school)</label>
+                                    <input class="au-input au-input--full" type="text" id="institute" name="instute">
                                 </div>
                                 <div class="form-group">
-                                    <label>Subject</label>
-                                    <input class="au-input au-input--full" type="text" id="bsc_subject" name="bsc_subject">
+                                    <label class="fw-bolder">Passing year</label>
+                                    <input class="au-input au-input--full" type="date" id="msc_year" name="msc_year">
                                 </div>
                                 <div class="form-group">
-                                    <label>University</label>
-                                    <input class="au-input au-input--full" type="text" id="bsc_university"
-                                        name="bsc_university">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Result</label>
-                                    <input class="au-input au-input--full" type="number" id="bsc_result" name="bsc_result">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Out Of</label>
-                                    <input class="au-input au-input--full" type="number" id="bsc_out_of" name="bsc_out_of">
-                                </div>
-                                <hr>
-                                {{-- College --}}
-                                <h2 class="text-center my-3"> <u>College</u> </h2>
-                                <div class="col-md-6 form-group">
-                                    <label class="fw-bolder">Degree(HSC)</label>
-                                    <input class="au-input au-input--full" type="text" id="hsc" name="hsc">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Passing year</label>
-                                    <input class="au-input au-input--full" type="number" id="hsc_year" name="hsc_year">
+                                    <label class="fw-bolder">Result</label>
+                                    <input class="au-input au-input--full" type="number" id="result" name="result">
                                 </div>
                                 <div class="form-group">
-                                    <label>Mejor</label>
-                                    <input class="au-input au-input--full" type="text" id="hsc_subject" name="hsc_subject">
+                                    <label class="fw-bolder">Out Of</label>
+                                    <select class="au-input au-input--full" id="out_of" name="out_of" style="height: 45px">
+                                        <option value="" selected disabled>-- Choose here --</option>
+                                        <option value="4.00">4.00</option>
+                                        <option value="5.00">5.00</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>College</label>
-                                    <input class="au-input au-input--full" type="text" id="hsc_college" name="hsc_college">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Result</label>
-                                    <input class="au-input au-input--full" type="number" id="hsc_result" name="hsc_result">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Out Of</label>
-                                    <input class="au-input au-input--full" type="number" id="hsc_out_of" name="hsc_out_of">
-                                </div>
-                                <hr>
-                                {{-- School --}}
-                                <h2 class="text-center my-3"> <u>School</u> </h2>
-                                <div class="col-md-6 form-group">
-                                    <label class="fw-bolder">Degree(SSC)</label>
-                                    <input class="au-input au-input--full" type="text" id="ssc" name="ssc">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Passing year</label>
-                                    <input class="au-input au-input--full" type="number" id="ssc_year" name="ssc_year">
-                                </div>
-                                <div class="form-group">
-                                    <label>Mejor</label>
-                                    <input class="au-input au-input--full" type="text" id="ssc_subject" name="ssc_subject">
-                                </div>
-                                <div class="form-group">
-                                    <label>School</label>
-                                    <input class="au-input au-input--full" type="text" id="ssc_school" name="ssc_school">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Result</label>
-                                    <input class="au-input au-input--full" type="number" id="ssc_result" name="ssc_result">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Out Of</label>
-                                    <input class="au-input au-input--full" type="number" id="ssc_out_of" name="ssc_out_of">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn au-btn--green text-white">Update</button>
-                                </div>
+                            </section>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn au-btn--green text-white">Update</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -578,6 +490,7 @@
     <script>
         $(document).ready(function() {
             $("#update-form").validate({
+                errorClass: 'errors',
                 rules: {
                     username: {
                         required: true,
@@ -633,6 +546,7 @@
             "Please enter a valid 11 digit phone number"
         );
     </script>
+
     {{-- For Bootstrap Modal --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
     </script>

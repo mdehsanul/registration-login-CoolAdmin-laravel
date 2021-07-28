@@ -27,6 +27,7 @@ class RegistrationController extends Controller
         $user->username = $request->username;
         $user->phone_number = $request->telephone;
         $user->email = $request->email;
+        $user->is_email_verified = 'yes';
         $user->password = $request->password;
         $user->confirm_password = $request->cpassword;
         $user->avatar = $request->image;
