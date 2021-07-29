@@ -40,4 +40,4 @@ Route::post('update', [UpdateController::class, 'update'])->name('update');
 
 // adding education
 Route::get('educationform/{id}', [AddEducationController::class, 'educationform']);
-Route::post('addeducation', [UpdateController::class, 'addeducation'])->name('addeducation');
+Route::post('addeducation', [AddEducationController::class, 'addeducation'])->name('addeducation');
