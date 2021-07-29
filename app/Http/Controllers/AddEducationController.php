@@ -18,6 +18,7 @@ class AddEducationController extends Controller
     function addeducation(Request $request)
     {
         $educationData = User::find($request->id);
+        $educationData->id = $request->id;
         $educationData->degree = $request->degree;
         $educationData->subject = $request->subject;
         $educationData->institute = $request->institute;
