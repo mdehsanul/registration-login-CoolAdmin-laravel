@@ -7,7 +7,7 @@ use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UpdateController;
-
+use App\Http\Controllers\AddEducationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +37,7 @@ Route::get('logout', [LogoutController::class, 'logout']);
 // update
 Route::get('updateform/{id}', [UpdateController::class, 'updateform']);
 Route::post('update', [UpdateController::class, 'update'])->name('update');
+
+// adding education
+Route::get('educationform/{id}', [AddEducationController::class, 'educationform']);
+Route::post('addeducation', [UpdateController::class, 'addeducation'])->name('addeducation');
