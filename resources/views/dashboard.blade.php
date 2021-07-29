@@ -593,10 +593,12 @@
                         data: {
                             _token: $("#csrf").val(),
                             type: 1,
-                            name: name,
-                            email: email,
-                            phone: phone,
-                            city: city
+                            degree: degree,
+                            subject: subject,
+                            institute: institute,
+                            year: year,
+                            result: result,
+                            out_of: out_of
                         },
                         cache: false,
                         success: function(dataResult) {
