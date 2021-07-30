@@ -20,6 +20,9 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
+    {{-- jQuery --}}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
     <!-- Vendor CSS-->
     <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -33,6 +36,8 @@
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link href="css/style.css" rel="stylesheet" media="all">
 
+
+
     <!-- Title Page-->
     <title>@yield('title')</title>
 
@@ -41,6 +46,8 @@
 <body class="animsition">
 
     @yield('content')
+
+
 
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>

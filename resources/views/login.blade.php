@@ -60,7 +60,6 @@
     <script>
         $(document).ready(function() {
             $("#login-form").validate({
-                errorClass: 'errors',
                 rules: {
                     email: {
                         required: true,

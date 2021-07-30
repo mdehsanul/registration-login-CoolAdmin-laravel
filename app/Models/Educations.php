@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class education extends Model
+class Educations extends Model
 {
     use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id',
+
+        'user_id',
         'degree',
         'subject',
         'institute',
@@ -30,7 +30,7 @@ class education extends Model
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        //
     ];
 
     /**

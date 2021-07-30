@@ -41,3 +41,7 @@ Route::post('update', [UpdateController::class, 'update'])->name('update');
 // adding education
 Route::get('educationform/{id}', [AddEducationController::class, 'educationform']);
 Route::post('addeducation', [AddEducationController::class, 'addeducation'])->name('addeducation');
+
+
+// display
+Route::get('education/{user_id}/show', [AddEducationController::class, 'get_education_data']);
