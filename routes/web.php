@@ -44,4 +44,4 @@ Route::post('addeducation', [AddEducationController::class, 'addeducation'])->na
 
 
 // display
-Route::get('education/{user_id}/show', [AddEducationController::class, 'get_education_data']);
+Route::get('education/{user_id}/geteducationdata', [AddEducationController::class, 'geteducationdata']);

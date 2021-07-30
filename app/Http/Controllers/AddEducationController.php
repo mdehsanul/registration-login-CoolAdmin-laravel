@@ -35,43 +35,9 @@ class AddEducationController extends Controller
     }
 
     // display education data
-
-    function get_education_data(Request $request)
+    function geteducationdata(Request $request)
     {
-        $educations = Educations::select('user_id', 'degree', 'subject', 'institute', 'year', 'result', 'out_of')->where('user_id', $request->user_id)->get();
-        // return response()->json($educations);
-        // return view('educationInformation', compact('educations'));'
-        return response()->ajax() ?
-            response()->json($educations, response()->HTTP_OK)
-            : abort(404);
+        $educations = Educations::where('user_id', 'like', '%' . $request->user_id . '%')->get();
+        return response()->json($educations);
     }
-
-
-    // return view('educationInformation', compact('education'));
-    // return response()->json($educations);
-    // return view('educationInformation')->with('education', json_decode($education, true));
-    // return view('educationInformation', ['education_data ' =>  $education]);
-    // return view('educationInformation')->with('$educations', $educations);
-    // return view('dashboard')->with(compact('educations'))->render();
-    // return view('dashboard', ['educations' => $educations]);
-
-
-    // return DB::table('users')
-    //     ->join('education', 'education.user_id', '=', 'users.id')
-    //     ->select('education.*')
-    //     ->get("\n");
-
-
-    // function show($id)
-    // {
-    //     $educationId = Education::find($id);
-    //     $education = Education::select(`degree`, `subject`, `institute`, `year`, `result`, `out_of`)->where('id', $educationId)->get();
-    //     return response()->json($education);
-    // }
-
-    // public function getUserData($user_id)
-    // {
-    //     $userData = Education::find($user_id);
-    //     return json_encode(array('data' => $userData));
-    // }
 }
