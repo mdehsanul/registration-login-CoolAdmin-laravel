@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Educations; // importing Models
 
-
 use Illuminate\Http\Request;
-use Response;
+
 
 class AddEducationController extends Controller
 {
@@ -38,6 +37,7 @@ class AddEducationController extends Controller
     function geteducationdata(Request $request)
     {
         $educations = Educations::where('user_id', 'like', '%' . $request->user_id . '%')->get();
+        // dd($educations);
         return response()->json($educations);
     }
 }

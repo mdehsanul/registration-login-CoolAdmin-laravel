@@ -3,7 +3,6 @@
        <thead>
            <tr>
                <th>degree</th>
-               <th>degree</th>
                <th>subject/mejor</th>
                <th>Institution(university/college/school)</th>
                <th>Passing year</th>
@@ -11,14 +10,7 @@
                <th>out of</th>
            </tr>
        </thead>
-       <tr>
-           <td>2018-09-29 05:57</td>
-           <td>Mobile</td>
-           <td>iPhone X 64Gb Grey</td>
-           <td>$999.00</td>
-           <td class="process">Processed</td>
-           <td>$999.00</td>
-       </tr>
+       <tbody id="bodyData">
        </tbody>
    </table>
    <!-- END DATA TABLE-->
@@ -34,6 +26,7 @@
            var data = {
                id: id,
                educations: JSON.stringify(educations),
+               _token: '{{ csrf_token() }}'
            };
 
            $.ajaxSetup({
@@ -49,9 +42,31 @@
                cache: false,
                contentType: 'application/json; charset=utf-8',
                processData: false,
-               success: function(response) {
-                   console.log(response);
-               }
+               success: function(response, status, xhr) {
+                   //    console.log(response);
+                   var rows = '';
+                   $.each(response, function(key, value) {
+                       rows = rows + '<tr>';
+                       rows = rows + '<td>' + value.degree + '</td>';
+                       rows = rows + '<td>' + value.subject + '</td>';
+                       rows = rows + '<td>' + value.institute + '</td>';
+                       rows = rows + '<td>' + value.year + '</td>';
+                       rows = rows + '<td class="process">' + value.result + '</td>';
+                       rows = rows + '<td>' + value.out_of + '</td>';
+                       rows = rows + '</tr>';
+                   });
+
+                   $("#bodyData").html(rows);
+
+                   console.log(status);
+                   console.log(xhr);
+               },
+               complete: function(data) {
+                   console.log('complete')
+               },
+               error: function(data) {
+                   console.log('error')
+               },
            });
        });
    </script>
