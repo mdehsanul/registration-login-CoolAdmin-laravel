@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User; // importing Models
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -20,8 +21,8 @@ class UpdateController extends Controller
         $userData->username = $request->username;
         $userData->phone_number = $request->telephone;
         $userData->is_email_verified = 'yes';
-        $userData->password = $request->password;
-        $userData->confirm_password = $request->cpassword;
+        $userData->password = Hash::make($request->new_password);
+        $userData->confirm_password = Hash::make($request->new_cpassword);
         // image start
         if ($request->hasfile('image')) {
             $file = $request->file('image');

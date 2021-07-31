@@ -23,12 +23,12 @@
                     </div>
                     <div class="form-group">
                         <label class="fw-bolder">Password</label>
-                        <input class="au-input au-input--full" type="password" id="password" name="password"
+                        <input class="au-input au-input--full" type="password" id="new_password" name="new_password"
                             placeholder="Password" value="{{ $loginUserdata['password'] }}">
                     </div>
                     <div class="form-group">
                         <label class="fw-bolder">Confirm Password</label>
-                        <input class="au-input au-input--full" type="password" id="cpassword" name="cpassword"
+                        <input class="au-input au-input--full" type="password" id="new_cpassword" name="new_cpassword"
                             placeholder="Confirm Password" value="{{ $loginUserdata['confirm_password'] }}">
                     </div>
                     <div class="form-group">
@@ -65,14 +65,14 @@
                     required: true,
                     telephone: true,
                 },
-                password: {
+                new_password: {
                     required: true,
                     minlength: 5,
                 },
-                cpassword: {
+                new_cpassword: {
                     required: true,
                     minlength: 5,
-                    equalTo: "#password",
+                    equalTo: "#new_cpassword",
                 },
                 image: {
                     required: true,
@@ -87,11 +87,11 @@
                 telephone: {
                     required: "Please enter your phone number"
                 },
-                password: {
+                new_password: {
                     required: "Please enter your password",
                     minlength: "Your password must consists of at least 5 character",
                 },
-                cpassword: {
+                new_cpassword: {
                     required: "Enter the password again",
                     minlength: "Your password must consists of at least 5 character",
                     equalTo: "Please enter the same password again",
@@ -125,18 +125,18 @@
                     data: {
                         username: $('#username').val(),
                         telephone: $('#telephone').val(),
-                        password: $('#password').val(),
-                        cpassword: $('#cpassword').val(),
+                        password: $('#new_password').val(),
+                        cpassword: $('#new_cpassword').val(),
                         image: $('#image').val(),
                     },
-                    // success: function(dataResult) {
-                    //     dataResult = JSON.parse(dataResult);
-                    //     if (dataResult.statusCode) {
-                    //         window.location = "/update";
-                    //     } else {
-                    //         alert("Internal Server Error");
-                    //     }
-                    // }
+                    success: function(dataResult) {
+                        dataResult = JSON.parse(dataResult);
+                        if (dataResult.statusCode) {
+                            window.location = "/update";
+                        } else {
+                            alert("Internal Server Error");
+                        }
+                    }
                 });
         });
     });

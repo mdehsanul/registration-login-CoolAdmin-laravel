@@ -29,7 +29,6 @@ class RegistrationController extends Controller
         $user->phone_number = $request->telephone;
         $user->email = $request->email;
         $user->is_email_verified = 'yes';
-        // $user->password = $request->password;
         $user->password = Hash::make($request->password);
         $user->confirm_password = Hash::make($request->cpassword);
         // image start
