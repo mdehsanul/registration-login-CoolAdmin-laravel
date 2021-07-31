@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; // importing Models
+use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
@@ -28,8 +29,9 @@ class RegistrationController extends Controller
         $user->phone_number = $request->telephone;
         $user->email = $request->email;
         $user->is_email_verified = 'yes';
-        $user->password = $request->password;
-        $user->confirm_password = $request->cpassword;
+        // $user->password = $request->password;
+        $user->password = Hash::make($request->password);
+        $user->confirm_password = Hash::make($request->cpassword);
         // image start
         if ($request->hasfile('image')) {
             $file = $request->file('image');

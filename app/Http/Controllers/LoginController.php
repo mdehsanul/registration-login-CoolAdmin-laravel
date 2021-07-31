@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -20,7 +23,7 @@ class LoginController extends Controller
         ]);
         $user =  User::where('email', '=', $request->email)->first();
         if ($user) {
-            if ($request->password === $user->password) {
+            if (Hash::check($request->password, $user->password)) {
                 $request->session()->put('loginId', $user->id); // storing login user id
                 return redirect('dashboard');
             } else {

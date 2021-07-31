@@ -8,7 +8,7 @@
             <th>password</th>
             <th>date</th>
             <th>status</th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
