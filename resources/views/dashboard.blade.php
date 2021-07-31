@@ -270,7 +270,7 @@
                                 <!-- Modal Button -->
                                 <div class="d-flex justify-content-end">
                                     <a href={{ 'educationform/' . $loginUserdata->id }} type="button"
-                                        class="au-btn au-btn-icon au-btn--blue" data-bs-toggle="modal"
+                                        class="au-btn au-btn-icon au-btn--green" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal2">
                                         <i class="zmdi zmdi-plus"></i>add educational information</a>
                                 </div>

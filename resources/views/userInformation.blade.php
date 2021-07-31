@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <tr class="tr-shadow">
-            <td><img src="{{ asset('user_images/' . $loginUserdata->avatar) }}" style="height: 151px; width: 150px;">
+            <td><img src="{{ asset('user_images/' . $loginUserdata->avatar) }}" style="height: 95px; width: 95px;">
             </td>
             <td style="text-align: center; vertical-align: middle;">
                 {{ $loginUserdata->username }}</td>
