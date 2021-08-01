@@ -22,7 +22,6 @@ class UpdateController extends Controller
         $userData = User::find($request->id);
         $userData->username = $request->username;
         $userData->phone_number = $request->telephone;
-        $userData->is_email_verified = 'yes';
         $userData->password = Hash::make($request->new_password);
         $userData->confirm_password = Hash::make($request->new_cpassword);
         // image start

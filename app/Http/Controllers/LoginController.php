@@ -19,20 +19,18 @@ class LoginController extends Controller
     // login user
     function postloginData(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
         $user =  User::where('email', '=', $request->email)->first();
-        if ($user) {
-            if (Hash::check($request->password, $user->password)) {
-                $request->session()->put('loginId', $user->id); // storing login user id
-                return redirect('dashboard');
-            } else {
-                return back()->with('fail', 'password not match');
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if (Auth::user()->email_verified_at == null) {
+                Auth::logout();
+                return redirect('login')->with('fail', 'Please verify your email to continue');
             }
+
+            $request->session()->put('loginId', $user->id); // storing login user id
+            return redirect('dashboard');
         } else {
-            return back()->with('fail', 'email is not registered');
+            return redirect()->back()->with('fail', 'Incorrect email or password');
         }
     }
 }

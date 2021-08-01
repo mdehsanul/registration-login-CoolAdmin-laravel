@@ -61,3 +61,6 @@ Route::post('addeducation', [AddEducationController::class, 'addeducation'])->na
 
 // retrieve and display
 Route::get('education/{user_id}/geteducationdata', [AddEducationController::class, 'geteducationdata']);
+
+// verification of user
+Route::get('verify/{token}', [RegistrationController::class, 'verifyEmail'])->name('verify');

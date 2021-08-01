@@ -13,7 +13,7 @@
                         <div class="login-form">
                             <form action="{{ route('registration-success') }}" method="post" enctype="multipart/form-data"
                                 id="registration-form">
-                                @if (Session::has('success'))
+                                @if (Session::has('success' || 'info'))
                                     <div class="alert alert-success">{{ Session::get('success') }}</div>
                                 @endif
                                 @if (Session::has('fail'))
