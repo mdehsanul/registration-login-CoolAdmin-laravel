@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
+    // log out
     function logout()
     {
         if (session()->has('loginId')) {

@@ -58,7 +58,8 @@
                          </div>
                          <div class="form-group">
                              <label class="fw-bolder">Result</label>
-                             <input class="au-input au-input--full" type="number" id="result" name="result" required>
+                             <input class="au-input au-input--full" type="number" step="any" id="result" name="result"
+                                 required>
                          </div>
                          <div class="form-group">
                              <label class="fw-bolder">Out Of</label>

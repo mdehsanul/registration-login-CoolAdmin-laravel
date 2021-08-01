@@ -7,11 +7,13 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
+    // showing dashboard
     // function dashboard()
     // {
     //     return view('dashboard');
     // }
 
+    // showing user information when user login
     function showdashboard(Request $request)
     {
         $loginUserdata = array();

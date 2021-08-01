@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 
 class UpdateController extends Controller
 {
+    // showing user information update form
     function updateform($id)
     {
         $loginUserdata = User::find($id);
         return view('dashboard', compact('loginUserdata'));
     }
 
+    // storeing data for update user information
     function update(Request $request)
     {
         $userData = User::find($request->id);

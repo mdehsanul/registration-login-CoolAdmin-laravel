@@ -11,12 +11,14 @@ use Illuminate\Http\Request;
 class AddEducationController extends Controller
 {
 
+    // showing education form
     function educationform($id)
     {
         $loginUserdata = User::find($id);
         return view('dashboard', compact('loginUserdata'));
     }
 
+    // storing education information
     function addeducation(Request $request)
     {
         $educationData = new Educations();
@@ -33,7 +35,7 @@ class AddEducationController extends Controller
         return redirect('dashboard');
     }
 
-    // display education data
+    // retrieve and send for display education data
     function geteducationdata(Request $request)
     {
         $educations = Educations::where('user_id', 'like', '%' . $request->user_id . '%')->get();
