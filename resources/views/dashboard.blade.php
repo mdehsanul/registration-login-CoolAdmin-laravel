@@ -251,7 +251,7 @@
                                 <h3 class="title-5 m-b-10">personal information</h3>
                                 <div class="table-responsive table-responsive-data2">
 
-                                    @include('userInformation')
+                                    @include('dashboardInformation.userInformation')
 
                                 </div>
                                 <!-- END DATA TABLE -->
@@ -263,7 +263,7 @@
                                 <h3 class="title-5 m-b-10">academic qualification</h3>
                                 <div class="table-responsive m-b-40">
 
-                                    @include('educationInformation')
+                                    @include('dashboardInformation.educationInformation')
 
                                 </div>
                                 <!-- END DATA TABLE-->
