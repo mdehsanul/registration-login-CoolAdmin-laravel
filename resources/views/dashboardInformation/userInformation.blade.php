@@ -5,7 +5,7 @@
             <th>name</th>
             <th>phone number</th>
             <th>email</th>
-            <th>password</th>
+            {{-- <th>password</th> --}}
             <th>date</th>
             <th>status</th>
             <th>Action</th>
@@ -22,8 +22,8 @@
             <td style="text-align: center; vertical-align: middle;">
                 <span class="block-email">{{ $loginUserdata->email }}</span>
             </td>
-            <td class="desc" style="text-align: center; vertical-align: middle;">
-                {{ $loginUserdata->password }}</td>
+            {{-- <td class="desc" style="text-align: center; vertical-align: middle;">
+                {{ $loginUserdata->password }}</td> --}}
             <td style="text-align: center; vertical-align: middle;">
                 {{ $loginUserdata->created_at }}</td>
             <td style="text-align: center; vertical-align: middle;">
