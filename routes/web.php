@@ -29,9 +29,6 @@ Route::get('register', [RegistrationController::class, 'register'])->middleware(
 // showing login form
 Route::get('login', [LoginController::class, 'login'])->middleware('isAlreadyLoggedIn');
 
-// showing forget-password form
-Route::get('forget-pass', [ForgetPasswordController::class, 'forget_pass']);
-
 // showing dashboard
 // Route::get('dashboard', [DashboardController::class, 'dashboard']);
 
@@ -64,3 +61,11 @@ Route::get('education/{user_id}/geteducationdata', [AddEducationController::clas
 
 // verification of user
 Route::get('verify/{token}', [RegistrationController::class, 'verifyEmail'])->name('verify');
+
+// forget-password
+Route::get('forget-password', [ForgetPasswordController::class, 'showForgetPasswordForm']);
+Route::post('forget-password-success', [ForgetPasswordController::class, 'submitForgetPasswordForm'])->name('forget-password-success');
+
+// reset-password
+Route::get('reset-password/{token}', [ForgetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

@@ -28,12 +28,12 @@
                                     <input class="au-input au-input--full" type="password" name="password"
                                         placeholder="Password">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
+                                <div class="login-checkbox d-flex justify-content-end">
+                                    {{-- <label>
                                         <input type="checkbox" name="remember" required>Remember Me
-                                    </label>
+                                    </label> --}}
                                     <label>
-                                        <a href="forget-pass">Forgotten Password?</a>
+                                        <a href="forget-password">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>

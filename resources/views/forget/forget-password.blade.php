@@ -11,7 +11,11 @@
                             <h3>Reset your Password</h3>
                         </div>
                         <div class="login-form">
-                            <form action="" method="" id="forget-pass">
+                            <form method="post" action="{{ route('forget-password-success') }}" id="forget-password">
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                                @endif
+                                @csrf
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" id="email" name="email"
@@ -46,7 +50,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
     <script>
         $(document).ready(function() {
-            $("#forget-pass").validate({
+            $("#forget-password").validate({
                 rules: {
                     email: {
                         required: true,
