@@ -1,5 +1,5 @@
 @extends('header')
-@section('title', 'Register')
+@section('title', 'Reset Password')
 @section('content')
 
     <div class="page-wrapper">
