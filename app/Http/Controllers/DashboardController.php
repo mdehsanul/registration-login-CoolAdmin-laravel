@@ -19,8 +19,8 @@ class DashboardController extends Controller
     {
         // dd(Auth::user());
         $loginUserdata = array();
-        if (session()->has('loginId')) {
-            $loginUserdata = User::where('id', '=', session()->get('loginId'))->first();
+        if (Auth::id()) {
+            $loginUserdata = User::where('id', '=', Auth::id())->first();
         }
         return view('dashboard', compact('loginUserdata'));
     }

@@ -6,7 +6,6 @@ use App\Mail\VerifyEmail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\VerifyUser;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 
@@ -54,25 +53,5 @@ class RegistrationController extends Controller
 
         Mail::to($user->email)->send(new VerifyEmail($user));
         return redirect('login')->with('success', 'Please click on the mail sent to your email');
-    }
-
-
-
-    // verifying mail when click
-    function verifyEmail($token)
-    {
-        $verifiedUser = VerifyUser::where('token', $token)->first();
-        if (isset($verifiedUser)) {
-            $user = $verifiedUser->user;
-            if (!$user->email_verified_at) {
-                $user->email_verified_at = Carbon::now();
-                $user->save();
-                return redirect('login')->with('success', 'Your email has been verified');
-            } else {
-                return redirect()->back()->with('info', 'Your email has already been verified');
-            }
-        } else {
-            return redirect('login')->with('error', 'Something went wrong!!');
-        }
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\AddEducationController;
+use App\Http\Controllers\VerifyEmail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +26,11 @@ Route::get('/', function () {
 
 // showing registration form
 Route::get('register', [RegistrationController::class, 'register'])->middleware('isAlreadyLoggedIn');
+// Route::get('register', [RegistrationController::class, 'register']);
 
 // showing login form
 Route::get('login', [LoginController::class, 'login'])->middleware('isAlreadyLoggedIn');
-
-// showing dashboard
-// Route::get('dashboard', [DashboardController::class, 'dashboard']);
+// Route::get('login', [LoginController::class, 'login']);
 
 // storing registration data
 Route::post('registration-success', [RegistrationController::class, 'postRegistrationData'])->name('registration-success');
@@ -40,6 +40,7 @@ Route::post('login-success', [LoginController::class, 'postloginData'])->name('l
 
 // showing user information when user login
 Route::get('dashboard', [DashboardController::class, 'showdashboard'])->middleware('isLoggedIn');
+// Route::get('dashboard', [DashboardController::class, 'showdashboard']);
 
 // log out
 Route::get('logout', [LogoutController::class, 'logout']);
@@ -60,7 +61,7 @@ Route::post('addeducation', [AddEducationController::class, 'addeducation'])->na
 Route::get('education/{user_id}/geteducationdata', [AddEducationController::class, 'geteducationdata']);
 
 // verification of user
-Route::get('verify/{token}', [RegistrationController::class, 'verifyEmail'])->name('verify');
+Route::get('verify/{token}', [VerifyEmail::class, 'verifyEmail'])->name('verify');
 
 // forget-password
 Route::get('forget-password', [ForgetPasswordController::class, 'showForgetPasswordForm']);

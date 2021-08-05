@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserAuthCheck
 {
@@ -17,7 +18,7 @@ class UserAuthCheck
     public function handle(Request $request, Closure $next)
     {
         // route middleware
-        if (!session()->has('loginId')) {
+        if (!Auth::id()) {
             return redirect('login')->with('fail', 'You have to login first');
         }
         return $next($request);
